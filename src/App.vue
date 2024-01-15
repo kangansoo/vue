@@ -12,39 +12,22 @@
     </div>
   </div>
 
-
-
-
-
-  <div>
-    <img src="./assets/room0.jpg" class="room-img" />
-    <h4 @click="모달창 = true">{{ products[0] }}</h4>
-    <p>50 만원</p>
-    <button @click="신고수[0]++">허위매물신고</button> 
-    <span>신고수 : {{ 신고수[0] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img" />
-    <h4>{{ products[1] }}</h4>
-    <p>60 만원</p>
-    <button @click="신고수[1]++">허위매물신고</button> 
-    <span>신고수 : {{ 신고수[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img" />
-    <h4>{{ products[2] }}</h4>
-    <p>70 만원</p>
-    <button @click="신고수[2]++">허위매물신고</button> 
-    <span>신고수 : {{ 신고수[2] }}</span>
+  <div v-for="(a, i) in 원룸들" :key="i">
+    <img :src="a.image" class="room-img" />
+    <h4>{{ a.title }}</h4>
+    <p>{{ a.price }}원</p>
   </div>
 </template>
 
 <script>
 
+import data from './assets/oneroom.js';
+
 export default {
   name: 'App',
   data() {
     return {
+      원룸들 : data,
       모달창 : false,
       신고수: [0, 0, 0],
       메뉴들 : ['Home', 'Shop', 'About'],
